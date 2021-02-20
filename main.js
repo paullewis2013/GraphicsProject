@@ -102,7 +102,7 @@ for(let i = 0; i < 64; i++){
             tempMat = new THREE.MeshBasicMaterial( { color: tempColor} );
         }
 
-        let tempCube = new THREE.Mesh(geometry, tempMat);
+        let tempCube = new THREE.Mesh(geometry4, tempMat);
         tempCube.position.x = -32 + i
         tempCube.position.z = -32 + j
 
@@ -148,7 +148,7 @@ const animate = function () {
 
 
             //update y position with random noise
-            cubeArr[i][j].position.y = -20 + amp * noise.simplex3(i/smoothness, j/smoothness, frameNum/vel)
+            cubeArr[i][j].position.y = 5 + amp * noise.simplex3(i/smoothness, j/smoothness, frameNum/vel)
 
             if(Math.random() < 0.03){
                 let tempColor = 0xffffff
