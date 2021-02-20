@@ -24,7 +24,14 @@
         <canvas id="canvas"></canvas>
 
         <h1>Perlin noise playground</h1>
-        <button class="btn">Text</button>
+        <div id="inputs">
+            <label for="smoothness">Smoothness</label> <input id="smoothness" type="range" min="1" max="100"/><br>
+            <label for="amplitude">Amplitude</label><input id="amplitude" type="range" min="0" max="40"/><br>
+            <label for="velocity">Velocity</label> <input id="velocity" type="range" min="1" max="10" step="0.5"/><br>
+
+        </div>
+        
+        <!-- <button class="btn">Text</button> -->
 
         <script src='perlin.js'></script>
         <script src="three.js"></script>

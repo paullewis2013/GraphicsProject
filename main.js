@@ -1,3 +1,13 @@
+// var slider = new Slider('#ex15', {
+// 	min: 1000,
+// 	max: 10000000,
+// 	scale: 'logarithmic',
+// 	step: 10
+// });
+
+
+
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -7,7 +17,7 @@ const renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true});
 renderer.setSize( window.innerWidth, window.innerHeight );
 // document.body.appendChild( renderer.domElement );
 
-const geometry = new THREE.BoxGeometry(1,10,1);
+const geometry = new THREE.BoxGeometry(1,50,1);
 const geometry2 = new THREE.BoxGeometry(7.5,1,1);
 const geometry3 = new THREE.SphereGeometry( 0.5, 10, 10 );
 const geometry4 = new THREE.SphereGeometry( 1, 12, 12 );
@@ -129,40 +139,18 @@ const animate = function () {
     frameNum++;
     requestAnimationFrame( animate );
 
-    // for(let i = 0; i < specialCubeArr.length; i++){
-    //     specialCubeArr[i].rotation.x += 0.02;
-    //     specialCubeArr[i].position.x += 0.05;
-
-    //     if(specialCubeArr[i].position.x > 45){
-    //         specialCubeArr[i].position.x -= 90
-    //     }
-    // }
-
-    // cube2.rotation.y += 0.005;
-    // cube2.position.y += 0.05;
-    // // light2.position.y += 0.05;
-
-    // if(cube.position.y > 45){
-    //     cube.position.y = -5;
-    //     // light.position.y = 15;
-    // }
-    // if(cube2.position.y > 45){
-    //     cube2.position.y = -5;
-    //     // light2.position.y = 15;
-    // }
-
     for(let i = 0; i < cubeArr.length; i++){
         for(let j= 0; j < cubeArr[i].length; j++){
 
-            //update y position with random noise
-            cubeArr[i][j].position.y = 10 * noise.simplex3(i/30, j/30, frameNum/1000)
+            amp = document.getElementById("amplitude").value
+            smoothness = document.getElementById("smoothness").value
+            vel = Math.pow(2, 11 - document.getElementById("velocity").value)
 
-            // if(Math.random() < 0.0001){
-            //     let tempColor = randColor()
-            //     let tempMat = new THREE.MeshBasicMaterial( { color: tempColor} );
-            //     cubeArr[i][j].material = tempMat
-            // }else
-             if(Math.random() < 0.03){
+
+            //update y position with random noise
+            cubeArr[i][j].position.y = -20 + amp * noise.simplex3(i/smoothness, j/smoothness, frameNum/vel)
+
+            if(Math.random() < 0.03){
                 let tempColor = 0xffffff
                 let tempMat = new THREE.MeshLambertMaterial( { color: tempColor} );
                 cubeArr[i][j].material = tempMat
