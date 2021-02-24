@@ -16,8 +16,11 @@ body{
 }
 #inputs{
     display: inline-block;
-    width: 20%;
+    width: 25%;
 }
 #smoothness, #amplitude, #velocity{
     float: right;
+}
+a, a:visited{
+    color: #268bd2;
 }
